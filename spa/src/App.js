@@ -3,6 +3,7 @@ import './App.css';
 import SomarComponent from './components/somar-component';
 import HelloComponent from './components/hello-component';
 import ContadorComponent from './components/contador-component';
+import ContadorBásico from './components/contador-básico';
 
 /*
 function somar(v1, v2) {
@@ -28,11 +29,12 @@ function App() {
 
   return (
     <div>
-      <div>{resultado}</div>
+      <ContadorBásico></ContadorBásico>
+      {/* <div>{resultado}</div>
       <SomarComponent v1={1000} v2={2200}></SomarComponent>      
       <HelloComponent></HelloComponent>
       <ContadorComponent valorMinimo={10} valorMaximo={15}></ContadorComponent>
-      <ContadorComponent valorMinimo={0} valorMaximo={10}></ContadorComponent>
+      <ContadorComponent valorMinimo={0} valorMaximo={10}></ContadorComponent> */}
     </div>
   );
 }

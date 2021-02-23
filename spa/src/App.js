@@ -1,23 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import SomarComponent from './components/somar-components';
+import HelloComponent from './components/hello-component';
+import ContadorComponent from './components/contador-component';
+
+const somar = (v1,v2) => v1 + v2;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const resultado = somar(100,200); 
+
+  return(
+    <div>
+      <div>{resultado}</div>  
+      <SomarComponent v1 ={1000} v2 = {2020}></SomarComponent>
+      <HelloComponent></HelloComponent>
+      <ContadorComponent valorMinimo = {10} valorMaximo = {15}></ContadorComponent>
     </div>
   );
 }

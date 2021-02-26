@@ -1,10 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import SomarComponent from './components/somar-component';
-import HelloComponent from './components/hello-component';
-import ContadorComponent from './components/contador-component';
-import ContadorBásico from './components/contador-básico';
-import ArCondicionado from './components/ar-condicionado';
+// import SomarComponent from './components/somar-component';
+// import HelloComponent from './components/hello-component';
+// import ContadorComponent from './components/contador-component';
+// import ContadorBásico from './components/contador-básico';
+// import ArCondicionado from './components/ar-condicionado';
+import CorEdit from './components/cor/cor-edit';
+import CorList from './components/cor/cor-list';
 
 /*
 function somar(v1, v2) {
@@ -30,8 +32,9 @@ function App() {
 
   return (
     <div>
-      <ArCondicionado></ArCondicionado>
-      <ContadorBásico></ContadorBásico>
+      <CorList></CorList>
+      {/* <ArCondicionado></ArCondicionado>
+      <ContadorBásico></ContadorBásico> */}
       {/* <div>{resultado}</div>
       <SomarComponent v1={1000} v2={2200}></SomarComponent>      
       <HelloComponent></HelloComponent>

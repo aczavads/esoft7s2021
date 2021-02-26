@@ -14,7 +14,7 @@ const CorEdit = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        doPost(cor);
+        doPost();
         //console.log(cor);
     }
 

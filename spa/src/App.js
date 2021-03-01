@@ -7,6 +7,9 @@ import './App.css';
 // import ArCondicionado from './components/ar-condicionado';
 import CorEdit from './components/cor/cor-edit';
 import CorList from './components/cor/cor-list';
+import LandingPage from './components/landing/landing-page';
+import ReactDOM from "react-dom";
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 /*
 function somar(v1, v2) {
@@ -28,11 +31,27 @@ const somar = (v1, v2) => {
 
 
 function App() {
-  const resultado = somar(100,150);
+  const resultado = somar(100, 150);
 
   return (
     <div>
-      <CorList></CorList>
+      <Router>
+        <Switch>
+        <Route exact path="/">
+            <LandingPage></LandingPage>
+          </Route>
+          <Route exact path="/cores">
+            <CorList></CorList>
+          </Route>
+          <Route path="/cores/editar/:idParaEditar">
+            <CorEdit></CorEdit>
+          </Route>
+          <Route path="/cores/nova">
+            <CorEdit></CorEdit>
+          </Route>
+        </Switch>
+      </Router>
+
       {/* <ArCondicionado></ArCondicionado>
       <ContadorBásico></ContadorBásico> */}
       {/* <div>{resultado}</div>

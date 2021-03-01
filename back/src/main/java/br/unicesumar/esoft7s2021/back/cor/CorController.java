@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/cores")
 public class CorController {
     private List<Cor> cores = new ArrayList<>();
-
 
     public CorController() {
         cores.add(new Cor("BLK", "Black"));
@@ -27,6 +27,20 @@ public class CorController {
     @GetMapping
     public List<Cor> get() {
         return this.cores;
+    }
+ 
+    @GetMapping("/{idParaEditar}")
+    public Cor getById(@PathVariable("idParaEditar") String idParaEditar) {
+        return this.cores.stream().filter(c -> c.getId().equals(idParaEditar) ).findFirst().orElseGet(Cor::new);
+    }
+
+    @PutMapping("/{id}")
+    public void put(@PathVariable String id, Cor corEditada) {
+        this.cores = this.cores.stream()
+            .filter(cor -> !cor.getId().equals(id))
+            .collect(Collectors.toList());
+            
+        this.cores.add(corEditada);
     }
 
     @PostMapping

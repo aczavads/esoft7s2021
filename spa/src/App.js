@@ -10,6 +10,7 @@ import CorList from './components/cor/cor-list';
 import LandingPage from './components/landing/landing-page';
 import ReactDOM from "react-dom";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import MeusLivrosList from './components/arthur_zavadski/meulivro/meulivro-list';
 
 /*
 function somar(v1, v2) {
@@ -39,6 +40,9 @@ function App() {
         <Switch>
         <Route exact path="/">
             <LandingPage></LandingPage>
+          </Route>
+          <Route exact path="/meuslivros">
+            <MeusLivrosList></MeusLivrosList>
           </Route>
           <Route exact path="/cores">
             <CorList></CorList>

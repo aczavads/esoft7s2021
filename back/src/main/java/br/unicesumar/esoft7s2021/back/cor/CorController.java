@@ -35,7 +35,7 @@ public class CorController {
     }
 
     @PutMapping("/{id}")
-    public void put(@PathVariable String id, Cor corEditada) {
+    public void put(@PathVariable String id, @RequestBody Cor corEditada) {
         this.cores = this.cores.stream()
             .filter(cor -> !cor.getId().equals(id))
             .collect(Collectors.toList());

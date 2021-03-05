@@ -26,7 +26,6 @@ const CorEdit = () => {
 
     const doPut = async () => {
         const response = await axios.put(`/api/cores/${idParaEditar}`, cor);
-        alert("Cor editada! Id=" + response.data);
         history.push("/cores");
     }
 
@@ -60,10 +59,10 @@ const CorEdit = () => {
             <hr></hr>
             <form onSubmit={handleSubmit}>
                 <div>Sigla:
-                    <input type="text" name="sigla" onChange={handleChange}></input>
+                    <input type="text" name="sigla" onChange={handleChange} value={cor.sigla}></input>
                 </div>
                 <div>Nome:
-                    <input type="text" name="nome" onChange={handleChange}></input>
+                    <input type="text" name="nome" onChange={handleChange} value={cor.nome}></input>
                 </div>
                 <button>Enviar</button>
             </form>

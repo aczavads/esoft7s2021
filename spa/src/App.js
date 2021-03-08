@@ -11,6 +11,8 @@ import LandingPage from './components/landing/landing-page';
 import ReactDOM from "react-dom";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import MeusLivrosList from './components/arthur_zavadski/meulivro/meulivro-list';
+import ProdutoList from './components/produto/produto-list';
+import ProdutoEdit from './components/produto/produto-edit';
 
 /*
 function somar(v1, v2) {
@@ -52,6 +54,15 @@ function App() {
           </Route>
           <Route path="/cores/nova">
             <CorEdit></CorEdit>
+          </Route>
+          <Route exact path="/produtos">
+            <ProdutoList></ProdutoList>
+          </Route>
+          <Route path="/produtos/editar/:idParaEditar">
+            <ProdutoEdit></ProdutoEdit>
+          </Route>
+          <Route path="/produtos/novo">
+            <ProdutoEdit></ProdutoEdit>
           </Route>
         </Switch>
       </Router>

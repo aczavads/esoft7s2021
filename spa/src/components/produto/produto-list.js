@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Menu from '../menu/menu';
 
 
 const ProdutoList = () => {
@@ -45,6 +46,7 @@ const ProdutoList = () => {
 
     return (
         <div>
+            <Menu></Menu>
             <h2>Listagem de Produtos</h2>
             <hr></hr>
 

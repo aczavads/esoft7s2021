@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 
 
@@ -65,6 +65,9 @@ const CorEdit = () => {
                     <input type="text" name="nome" onChange={handleChange} value={cor.nome}></input>
                 </div>
                 <button>Enviar</button>
+                <Link to="/cores">
+                    Voltar                   
+                </Link>
             </form>
         </div>
     )

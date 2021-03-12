@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Menu from '../menu/menu';
 
 
 const CorList = () => {
@@ -44,6 +45,7 @@ const CorList = () => {
 
     return (
         <div>
+            <Menu></Menu>
             <h2>Listagem de Cores</h2>
             <hr></hr>
 

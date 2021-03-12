@@ -1,8 +1,12 @@
 import React from 'react';
+import Menu from '../menu/menu';
 
 const LandingPage = () => {
     return (
-        <div>LandingPage</div>
+        <div>
+            <Menu></Menu>
+            <div>LandingPage</div>
+        </div>
     );
 }
 

@@ -9,14 +9,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 
 @Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Produto {
     @Getter
     @Id
+    @EqualsAndHashCode.Include
     private String id;
     @Getter
     @Setter
@@ -40,27 +43,6 @@ public class Produto {
         this.lancadoEm = lancadoEm;
         this.precoUnitario = precoUnitario;
     }    
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Produto)) {
-            return false;
-        }
-        Produto produto = (Produto) o;
-        return Objects.equals(id, produto.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-
-
-
-    
+   
     
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,8 +20,9 @@ public class ProdutoController {
     private ProdutoService service;    
 
     @GetMapping
-    public List<Produto> get() {
-        return service.obterTodos();
+    public List<Produto> get(@RequestParam(name = "termo",required = false) String termo) {
+        System.out.println(">>>> [" + termo + "]");
+        return service.obterTodos(termo);
     }
  
     @GetMapping("/{idParaEditar}")

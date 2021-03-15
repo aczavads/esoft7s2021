@@ -6,10 +6,17 @@ import Menu from '../menu/menu';
 
 const ProdutoList = () => {
     const [produtos, setProdutos] = useState([]);
+    const [termoDeBusca, setTermoDeBusca] = useState("");
 
     const doGetProdutos = async () => {
         const response = await axios.get("/api/produtos");
         setProdutos(response.data);
+    }
+
+    const doSearchProdutos = async () => {
+        const response = await axios.get(`/api/produtos?termo=${termoDeBusca}`);
+        setProdutos(response.data);
+        console.log(response.data);
     }
 
     useEffect(() => {
@@ -27,6 +34,16 @@ const ProdutoList = () => {
             doExcluirProdutos(id);
         }
     }
+
+    const handleSearchInputChange = (event) => {
+        setTermoDeBusca(event.target.value);
+    }
+
+    const handleSearch = (event) => {        
+        console.log("Pesquisando por: " + termoDeBusca);
+        doSearchProdutos();
+    }
+
 
     const tableData = produtos.map(row => {
         return <tr key={row.id}>
@@ -53,6 +70,10 @@ const ProdutoList = () => {
             <Link to="/produtos/novo">
                 <button>Novo Produto</button>
             </Link>
+            <div>                
+                <input type="text" name="search" onChange={handleSearchInputChange}></input>
+                <button onClick={handleSearch}>Pesquisar</button>
+            </div>
 
             <table border="1">
                 <thead>

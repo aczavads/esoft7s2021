@@ -2,7 +2,6 @@ package br.unicesumar.esoft7s2021.back.produto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.UUID;
 
 import javax.persistence.Column;

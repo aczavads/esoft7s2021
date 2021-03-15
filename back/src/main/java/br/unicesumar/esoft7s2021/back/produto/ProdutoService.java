@@ -13,8 +13,12 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepository repository;
 
-    public List<Produto> obterTodos() {
-        return repository.findAll();
+    public List<Produto> obterTodos(String termo) {
+        if (termo == null || termo.trim().length() == 0) {
+            return repository.findAll();            
+        }
+        //return repository.encontrarComTermo(termo);            
+        return repository.findByDescricaoLike("%" + termo + "%");
     } 
 
     public Produto obterPeloId(String id) {

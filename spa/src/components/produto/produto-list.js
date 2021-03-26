@@ -11,6 +11,7 @@ const ProdutoList = () => {
 
     const doGetProdutos = async (páginaRequerida) => {
         const response = await axios.get(`/api/produtos?termo=${termoDeBusca}&page=${páginaRequerida}`);
+        setPáginaRequerida(páginaRequerida);
         setProdutos(response.data);
         console.log(response.data);
     }
@@ -57,16 +58,19 @@ const ProdutoList = () => {
     })
     
     useEffect(() => {
-        doGetProdutos(páginaRequerida);
+        console.log("executando doGetProdutos " + páginaRequerida);
+        doGetProdutos(páginaRequerida);        
     }, [páginaRequerida]);
 
     const requestPage = (requestedPage) => {
+        console.log(`requestedPage=${requestedPage}   totalPages=${produtos.totalPages}   páginaRequerida=${páginaRequerida}`);
         if (requestedPage <= 0) {
             requestedPage = 0;
         }
         if (requestedPage >= produtos.totalPages) {
             requestedPage = produtos.totalPages-1;
         }
+        console.log(requestedPage);
         setPáginaRequerida(requestedPage);
     }
 

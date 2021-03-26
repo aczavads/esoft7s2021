@@ -13,6 +13,8 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import MeusLivrosList from './components/arthur_zavadski/meulivro/meulivro-list';
 import ProdutoList from './components/produto/produto-list';
 import ProdutoEdit from './components/produto/produto-edit';
+import ManterPessoa from './components/pessoa/manter-pessoa';
+import ManterLivro from './components/livro/manter-livro';
 
 /*
 function somar(v1, v2) {
@@ -55,6 +57,7 @@ function App() {
           <Route path="/cores/nova">
             <CorEdit></CorEdit>
           </Route>
+
           <Route exact path="/produtos">
             <ProdutoList></ProdutoList>
           </Route>
@@ -63,6 +66,37 @@ function App() {
           </Route>
           <Route path="/produtos/novo">
             <ProdutoEdit></ProdutoEdit>
+          </Route>
+
+          <Route exact path="/livros">
+            <ManterLivro></ManterLivro>
+          </Route>
+          <Route path="/livros/novo">
+            <ManterLivro></ManterLivro>
+          </Route>
+          <Route path="/livros/editar/:idParaEditar">
+            <ManterLivro></ManterLivro>
+          </Route>
+
+
+
+
+
+
+
+
+
+          <Route exact path="/pessoas">
+            <ManterPessoa></ManterPessoa>
+          </Route>
+          <Route exact path="/pessoas">
+            <ManterPessoa></ManterPessoa>
+          </Route>
+          <Route exact path="/pessoas/nova">
+            <ManterPessoa></ManterPessoa>
+          </Route>
+          <Route exact path="/pessoas/editar/:idParaEditar">
+            <ManterPessoa></ManterPessoa>
           </Route>
         </Switch>
       </Router>

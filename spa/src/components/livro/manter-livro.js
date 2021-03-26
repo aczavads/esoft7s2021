@@ -1,25 +1,26 @@
-import React from 'react';
-import { useLocation } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { Route, Switch, useLocation } from 'react-router';
 import Menu from '../menu/menu';
 import LivroEdit from './livro-edit';
 import LivroList from './livro-list';
 
 const ManterLivro = () => {
     const location = useLocation();
+    const [statusPesquisa, setStatusPesquisa] = useState({páginaAtual: 0, termoDePesquisa : "teste"});
 
-    const definirComponente = () => {
-        //const pathname = location.pathname;
-        const { pathname } = location;
-        if (pathname === "/livros") {
-            return <LivroList></LivroList>
-        } else if (pathname === "/livros/novo" || pathname.startsWith("/livros/editar/")){
-            return <LivroEdit></LivroEdit>
-        }
-    }
+    useEffect(() => {
+        console.log("<<MANTER LIVRO>> Página atual alterada! " + statusPesquisa.páginaAtual);
+    }, [statusPesquisa]);
 
     return (
         <div>
-            {definirComponente()}
+            <Switch>
+                <Route exact path="/livros">
+                    <LivroList statusPesquisa={statusPesquisa} setStatusPesquisa={setStatusPesquisa}></LivroList>
+                </Route>
+                <Route path="/livros/novo" component={LivroEdit}></Route>
+                <Route path="/livros/editar/:idParaEditar" component={LivroEdit}></Route>
+            </Switch>            
         </div>
     )
 }

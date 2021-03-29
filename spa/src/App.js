@@ -68,23 +68,9 @@ function App() {
             <ProdutoEdit></ProdutoEdit>
           </Route>
 
-          <Route exact path="/livros" component={ManterLivro}></Route>
-          <Route path="/livros/novo" component={ManterLivro}></Route>
-          <Route path="/livros/editar/:idParaEditar" component={ManterLivro}></Route>
+          <Route path="/livros" component={ManterLivro}></Route>
+          <Route path="/pessoas" component={ManterPessoa}></Route>
 
-
-          <Route exact path="/pessoas">
-            <ManterPessoa></ManterPessoa>
-          </Route>
-          <Route exact path="/pessoas">
-            <ManterPessoa></ManterPessoa>
-          </Route>
-          <Route exact path="/pessoas/nova">
-            <ManterPessoa></ManterPessoa>
-          </Route>
-          <Route exact path="/pessoas/editar/:idParaEditar">
-            <ManterPessoa></ManterPessoa>
-          </Route>
         </Switch>
       </Router>
 

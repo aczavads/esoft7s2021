@@ -15,6 +15,7 @@ import ProdutoList from './components/produto/produto-list';
 import ProdutoEdit from './components/produto/produto-edit';
 import ManterPessoa from './components/pessoa/manter-pessoa';
 import ManterLivro from './components/livro/manter-livro';
+import ManterProduto from './components/produto2/manter-produto';
 
 /*
 function somar(v1, v2) {
@@ -68,23 +69,10 @@ function App() {
             <ProdutoEdit></ProdutoEdit>
           </Route>
 
-          <Route exact path="/livros" component={ManterLivro}></Route>
-          <Route path="/livros/novo" component={ManterLivro}></Route>
-          <Route path="/livros/editar/:idParaEditar" component={ManterLivro}></Route>
+          <Route path="/livros" component={ManterLivro}></Route>
+          <Route path="/pessoas" component={ManterPessoa}></Route>
+          <Route path="/produtos2" component={ManterProduto}></Route>
 
-
-          <Route exact path="/pessoas">
-            <ManterPessoa></ManterPessoa>
-          </Route>
-          <Route exact path="/pessoas">
-            <ManterPessoa></ManterPessoa>
-          </Route>
-          <Route exact path="/pessoas/nova">
-            <ManterPessoa></ManterPessoa>
-          </Route>
-          <Route exact path="/pessoas/editar/:idParaEditar">
-            <ManterPessoa></ManterPessoa>
-          </Route>
         </Switch>
       </Router>
 

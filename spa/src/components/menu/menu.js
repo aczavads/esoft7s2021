@@ -14,6 +14,9 @@ const Menu = () => {
                 <Link to="/produtos">
                     <li>Manter produtos</li>
                 </Link>
+                <Link to="/produtos2">
+                    <li>Manter produtos 2 (DOIS!!)</li>
+                </Link>
                 <Link to="/livros">
                     <li>Manter livros</li>
                 </Link>

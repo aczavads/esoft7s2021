@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useHistory, useParams } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 
 
 
@@ -8,7 +10,9 @@ const ProdutoEdit = () => {
     const history = useHistory();
     const { idParaEditar } = useParams();
     const emModoDeEdição = idParaEditar !== undefined;
-    const [produto, setProduto] = useState({descricao: "", lancadoEm: new Date(), precoUnitario : 0.00  });
+    const [produto, setProduto] = useState({ descricao: "", lancadoEm: new Date(), precoUnitario: 0.00 });
+    const [searchedProdutos, setSearchedProdutos] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     console.log(idParaEditar);
 
@@ -18,8 +22,8 @@ const ProdutoEdit = () => {
         console.log(response.data);
     }
 
-    useEffect(() => {        
-        if (emModoDeEdição) {            
+    useEffect(() => {
+        if (emModoDeEdição) {
             doGetById();
         }
     }, []);
@@ -53,6 +57,18 @@ const ProdutoEdit = () => {
         setProduto(novoProduto);
     }
 
+    const doSearchProdutos = async (termoDePesquisa) => {
+        setIsLoading(true);
+        const response = await axios.get(`/api/produtos?termo=${termoDePesquisa}`);
+        setSearchedProdutos(response.data.content);
+        setIsLoading(false);
+    }
+
+    const setSelectedProduto = (produto) => {
+        console.log(produto);
+    }
+
+
     return (
         <div>
             <h2>Edição de Produto {emModoDeEdição ? "(editando)" : "(incluindo)"}</h2>
@@ -67,9 +83,21 @@ const ProdutoEdit = () => {
                 <div>Preço unitário:
                     <input type="text" name="precoUnitario" onChange={handleChange} value={produto.precoUnitario}></input>
                 </div>
-                <button>Enviar</button>
+                <div>
+                    <AsyncTypeahead
+                        id="id"
+                        filterBy={() => true}   
+                        isLoading={isLoading}
+                        labelKey={(produto) => `${produto.descricao} (${produto.id})`}
+                        onSearch={doSearchProdutos}
+                        options={searchedProdutos}
+                        onChange={setSelectedProduto}                    
+                    />
+                </div>
+
+                <Button>Enviar</Button>
                 <Link to="/produtos2">
-                    Voltar                   
+                    Voltar
                 </Link>
             </form>
         </div>

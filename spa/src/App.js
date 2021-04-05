@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import SomarComponent from './components/somar-component';
 // import HelloComponent from './components/hello-component';
 // import ContadorComponent from './components/contador-component';
@@ -14,7 +15,6 @@ import MeusLivrosList from './components/arthur_zavadski/meulivro/meulivro-list'
 import ProdutoList from './components/produto/produto-list';
 import ProdutoEdit from './components/produto/produto-edit';
 import ManterPessoa from './components/pessoa/manter-pessoa';
-import ManterLivro from './components/livro/manter-livro';
 import ManterProduto from './components/produto2/manter-produto';
 
 /*
@@ -69,7 +69,6 @@ function App() {
             <ProdutoEdit></ProdutoEdit>
           </Route>
 
-          <Route path="/livros" component={ManterLivro}></Route>
           <Route path="/pessoas" component={ManterPessoa}></Route>
           <Route path="/produtos2" component={ManterProduto}></Route>
 

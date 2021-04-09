@@ -11,7 +11,7 @@ const ProdutoEdit = () => {
     const { idParaEditar } = useParams();
     const emModoDeEdição = idParaEditar !== undefined;
     const [produto, setProduto] = useState({ descricao: "", lancadoEm: new Date(), precoUnitario: 0.00 });
-    const [searchedProdutos, setSearchedProdutos] = useState([]);
+    const [searchedCores, setSearchedProdutos] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     console.log(idParaEditar);
@@ -57,15 +57,15 @@ const ProdutoEdit = () => {
         setProduto(novoProduto);
     }
 
-    const doSearchProdutos = async (termoDePesquisa) => {
+    const doSearchCores = async (termoDePesquisa) => {
         setIsLoading(true);
-        const response = await axios.get(`/api/produtos?termo=${termoDePesquisa}`);
+        const response = await axios.get(`/api/cores?termo=${termoDePesquisa}`);
         setSearchedProdutos(response.data.content);
         setIsLoading(false);
     }
 
-    const setSelectedProduto = (produto) => {
-        console.log(produto);
+    const setSelectedCor = (cor) => {
+        console.log(cor);
     }
 
 
@@ -88,10 +88,10 @@ const ProdutoEdit = () => {
                         id="id"
                         filterBy={() => true}   
                         isLoading={isLoading}
-                        labelKey={(produto) => `${produto.descricao} (${produto.id})`}
-                        onSearch={doSearchProdutos}
-                        options={searchedProdutos}
-                        onChange={setSelectedProduto}                    
+                        labelKey={(cor) => `${cor.nome} (${cor.id})`}
+                        onSearch={doSearchCores}
+                        options={searchedCores}
+                        onChange={setSelectedCor}                    
                     />
                 </div>
 

@@ -9,7 +9,7 @@ const CorList = () => {
 
     const doGetCores = async () => {
         const response = await axios.get("/api/cores");
-        setCores(response.data);
+        setCores(response.data.content);
     }
 
     useEffect(() => {

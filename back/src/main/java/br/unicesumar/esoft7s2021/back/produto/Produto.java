@@ -11,7 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import br.unicesumar.esoft7s2021.back.cor.Cor;
 import lombok.EqualsAndHashCode;
@@ -37,7 +38,7 @@ public class Produto {
     @Column(scale = 2)
     private BigDecimal precoUnitario;
 
-    @JsonIgnore
+    @JsonProperty(access = Access.WRITE_ONLY)
     @Getter
     @Setter
     @ManyToOne

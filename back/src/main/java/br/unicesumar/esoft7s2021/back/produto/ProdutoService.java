@@ -44,6 +44,9 @@ public class ProdutoService {
     }
 
     public Produto salvar(Produto produto) {
+        if (produto.getCorPadrao() == null) {
+            throw new ProdutoInválidoException("Cor padrão do produto não pode ser nula!");
+        }
         return repository.save(produto);
     }
 

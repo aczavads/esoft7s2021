@@ -10,8 +10,8 @@ const ProdutoEdit = () => {
     const history = useHistory();
     const { idParaEditar } = useParams();
     const emModoDeEdição = idParaEditar !== undefined;
-    const [produto, setProduto] = useState({ descricao: "", lancadoEm: new Date(), precoUnitario: 0.00 });
-    const [searchedCores, setSearchedProdutos] = useState([]);
+    const [produto, setProduto] = useState({ descricao: "", lancadoEm: new Date(), precoUnitario: 0.00, corPadraoVO: {id:"", nome: ""}} );
+    const [searchedCores, setSearchedCores] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     console.log(idParaEditar);
@@ -34,12 +34,16 @@ const ProdutoEdit = () => {
     }
 
     const doPost = async () => {
+        console.log("Posting...");
+        console.log(produto);
+        console.log("Posted.");
         const response = await axios.post("/api/produtos", produto);
         alert("Novo produto criado! Id=" + response.data);
         history.push("/produtos2");
     }
 
     const handleSubmit = (event) => {
+        console.log("handleSubmit... ");
         event.preventDefault();
         if (emModoDeEdição) {
             console.log("Put...");
@@ -60,12 +64,15 @@ const ProdutoEdit = () => {
     const doSearchCores = async (termoDePesquisa) => {
         setIsLoading(true);
         const response = await axios.get(`/api/cores?termo=${termoDePesquisa}`);
-        setSearchedProdutos(response.data.content);
+        setSearchedCores(response.data.content);
         setIsLoading(false);
     }
 
     const setSelectedCor = (cor) => {
-        console.log(cor);
+        console.log("setSelectedCor");
+        const novoProduto = { ...produto, corPadrao: cor[0] };
+        console.log(novoProduto);        
+        setProduto(novoProduto);
     }
 
 
@@ -94,8 +101,7 @@ const ProdutoEdit = () => {
                         onChange={setSelectedCor}                    
                     />
                 </div>
-
-                <Button>Enviar</Button>
+                <Button type="submit">Enviar</Button>
                 <Link to="/produtos2">
                     Voltar
                 </Link>

@@ -96,11 +96,14 @@ const ProdutoEdit = () => {
                         filterBy={() => true}   
                         isLoading={isLoading}
                         labelKey={(cor) => `${cor.nome} (${cor.id})`}
-                        onSearch={doSearchCores}
+                        onChange={doSearchCores}
                         options={searchedCores}
                         onChange={setSelectedCor}                    
+                        selected={[produto.corPadraoVO]}
                     />
                 </div>
+                {produto.corPadraoVO.nome}
+
                 <Button type="submit">Enviar</Button>
                 <Link to="/produtos2">
                     Voltar

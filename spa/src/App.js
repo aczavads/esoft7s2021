@@ -16,6 +16,7 @@ import ProdutoList from './components/produto/produto-list';
 import ProdutoEdit from './components/produto/produto-edit';
 import ManterPessoa from './components/pessoa/manter-pessoa';
 import ManterProduto from './components/produto2/manter-produto';
+import TesteTypeahead from './components/teste-typeahead/teste-typeahead';
 
 /*
 function somar(v1, v2) {
@@ -71,7 +72,8 @@ function App() {
 
           <Route path="/pessoas" component={ManterPessoa}></Route>
           <Route path="/produtos2" component={ManterProduto}></Route>
-
+          
+          <Route exact path="/teste-typeahead" component={TesteTypeahead}></Route>
         </Switch>
       </Router>
 

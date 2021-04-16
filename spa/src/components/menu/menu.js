@@ -20,6 +20,9 @@ const Menu = () => {
                 <Link to="/livros">
                     <li>Manter livros</li>
                 </Link>
+                <Link to="/teste-typeahead">
+                    <li>TesteTypeahead</li>
+                </Link>
             </ul>
         </div>
     );

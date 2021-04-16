@@ -12,6 +12,7 @@ const ProdutoEdit = () => {
     const emModoDeEdição = idParaEditar !== undefined;
     const [produto, setProduto] = useState({ descricao: "", lancadoEm: new Date(), precoUnitario: 0.00, corPadraoVO: {id:"", nome: ""}} );
     const [searchedCores, setSearchedCores] = useState([]);
+    const [selectedCor, setSelectedCor] = useState([{id:"", nome: ""}]);
     const [isLoading, setIsLoading] = useState(false);
 
     console.log(idParaEditar);
@@ -33,11 +34,10 @@ const ProdutoEdit = () => {
         history.push("/produtos2");
     }
 
-    const doPost = async () => {
-        console.log("Posting...");
-        console.log(produto);
-        console.log("Posted.");
-        const response = await axios.post("/api/produtos", produto);
+    const doPost = async () => {        
+        const produtoComCor = { ...produto, corPadrao: selectedCor[0] };
+
+        const response = await axios.post("/api/produtos", produtoComCor);
         alert("Novo produto criado! Id=" + response.data);
         history.push("/produtos2");
     }
@@ -68,12 +68,14 @@ const ProdutoEdit = () => {
         setIsLoading(false);
     }
 
+    /*
     const setSelectedCor = (cor) => {
         console.log("setSelectedCor");
         const novoProduto = { ...produto, corPadrao: cor[0] };
         console.log(novoProduto);        
         setProduto(novoProduto);
     }
+    */
 
 
     return (
@@ -96,10 +98,11 @@ const ProdutoEdit = () => {
                         filterBy={() => true}   
                         isLoading={isLoading}
                         labelKey={(cor) => `${cor.nome} (${cor.id})`}
-                        onChange={doSearchCores}
+                        onSearch={doSearchCores}
                         options={searchedCores}
                         onChange={setSelectedCor}                    
-                        selected={[produto.corPadraoVO]}
+                        selected={selectedCor}
+                        defaultSelected={produto.corPadraoVO}
                     />
                 </div>
                 {produto.corPadraoVO.nome}

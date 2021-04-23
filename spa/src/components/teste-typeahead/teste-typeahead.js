@@ -5,9 +5,12 @@ import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import axios from 'axios';
 
 const TesteTypeahead = () => {
-    const [isLoading, setIsLoading] = useState(false);
+    /*
     const [coresDisponíveis, setCoresDisponívels] = useState([]);
+
+
     const [coresPesquisadas, setCoresPesquisadas] = useState([]);
+    //const [coresPesquisadas, setCoresPesquisadas] = useState([]);
     const [corSelecionada, setCorSelecionada] = useState([]);
 
     const tableData = coresDisponíveis.map(row => {
@@ -71,6 +74,8 @@ const TesteTypeahead = () => {
             </table>
         </div>
     )
+    */
+   return (<div></div>);
 }
 
 export default TesteTypeahead;

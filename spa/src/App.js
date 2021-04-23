@@ -44,7 +44,7 @@ function App() {
     <div>
       <Router>
         <Switch>
-        <Route exact path="/">
+          <Route exact path="/">
             <LandingPage></LandingPage>
           </Route>
           <Route exact path="/meuslivros">
@@ -72,7 +72,7 @@ function App() {
 
           <Route path="/pessoas" component={ManterPessoa}></Route>
           <Route path="/produtos2" component={ManterProduto}></Route>
-          
+
           <Route exact path="/teste-typeahead" component={TesteTypeahead}></Route>
         </Switch>
       </Router>

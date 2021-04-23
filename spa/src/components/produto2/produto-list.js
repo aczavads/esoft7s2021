@@ -8,7 +8,7 @@ import { Button, Modal } from 'react-bootstrap';
 const ProdutoList = (props) => {
     const [produtos, setProdutos] = useState({ content: [], pageable: { pageNumber: 0 }, totalPages: 0 });
     const { statusPesquisa, setStatusPesquisa } = props;
-    const [ idToDelete, setIdToDelete ] = useState(null);
+    const [idToDelete, setIdToDelete] = useState(null);
 
 
     const handleAbortConfirmDelete = () => {
@@ -78,20 +78,21 @@ const ProdutoList = (props) => {
     }
 
 
-    const tableData = produtos.content.map(row => {
-        return <tr key={row.id}>
-            <td>{row.id}</td>
-            <td>{row.descricao}</td>
-            <td>{row.lancadoEm}</td>
-            <td>{row.precoUnitario}</td>
-            <td>
-                <button onClick={() => handleExcluir(row.id)}>Excluir</button>
-                <Link to={`/produtos2/editar/${row.id}`}>
-                    <button>Editar</button>
-                </Link>
-            </td>
-        </tr>;
-    })
+    const tableData = produtos.content.map(
+        row => {
+            return <tr key={row.id}>
+                <td>{row.id}</td>
+                <td>{row.descricao}</td>
+                <td>{row.lancadoEm}</td>
+                <td>{row.precoUnitario}</td>
+                <td>
+                    <button onClick={() => handleExcluir(row.id)}>Excluir</button>
+                    <Link to={`/produtos2/editar/${row.id}`}>
+                        <button>Editar</button>
+                    </Link>
+                </td>
+            </tr>;
+        })
 
     const requestPage = (requestedPage) => {
         if (requestedPage <= 0) {

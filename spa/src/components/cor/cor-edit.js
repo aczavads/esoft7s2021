@@ -49,7 +49,7 @@ const CorEdit = () => {
     const handleChange = (event) => {
         //console.log(event.target.name + "=" + event.target.value);
         const novaCor = { ...cor, [event.target.name]: event.target.value };
-        //console.log(novaCor);
+        console.log(novaCor);
         setCor(novaCor);
     }
 
@@ -59,7 +59,7 @@ const CorEdit = () => {
             <hr></hr>
             <form onSubmit={handleSubmit}>
                 <div>Sigla:
-                    <input type="text" name="sigla" onChange={handleChange} value={cor.sigla}></input>
+                    <input type="text" name="sigla" onChange={handleChange} onBlur={ () => alert("Ulha, saiu!")} value={cor.sigla}></input>
                 </div>
                 <div>Nome:
                     <input type="text" name="nome" onChange={handleChange} value={cor.nome}></input>

@@ -57,7 +57,7 @@ const ProdutoEdit = () => {
     const handleChange = (event) => {
         //console.log(event.target.name + "=" + event.target.value);
         const novoProduto = { ...produto, [event.target.name]: event.target.value };
-        //console.log(novaCor);
+        //console.log(novoProduto);
         setProduto(novoProduto);
     }
 

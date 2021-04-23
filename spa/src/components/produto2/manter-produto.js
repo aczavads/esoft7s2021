@@ -7,7 +7,7 @@ const ManterProduto = () => {
     const [statusPesquisa, setStatusPesquisa] = useState({páginaAtual: 0, termoDePesquisa : "teste"});
 
     useEffect(() => {
-        console.log("<<MANTER PRODUT>> Página atual alterada! " + statusPesquisa.páginaAtual);
+        console.log("<<MANTER PRODUTO>> Página atual alterada! " + statusPesquisa.páginaAtual);
     }, [statusPesquisa]);
 
     return (
